@@ -27,6 +27,11 @@
         </plugins>
     </build>
 
+    <properties>
+        <allure.version>1.5.0.RC2</allure.version>
+        <aspectj.version>1.8.5</aspectj.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.wavesplatform</groupId>
