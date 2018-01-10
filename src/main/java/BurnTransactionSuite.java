@@ -14,12 +14,12 @@ public class BurnTransactionSuite {
             "glimpse food loud wasp robust story soon mad width play grid still doctor glimpse humble", 0, 'T');
     private final String assetId = "7xf8zHJsNJ7ndyCjVWadHvWdoMc1VnfqD3FgQskTJLtT";
 
-    private BurnTransactionSuite() throws IOException, URISyntaxException {
+    public BurnTransactionSuite() throws IOException, URISyntaxException {
         node = new Node("https://testnode1.wavesnodes.com");
     }
 
     @Test
-    private void test() throws IOException {
+    public void test() throws IOException {
         Transaction burnTx = Transaction.makeBurnTx(account, assetId, 1, FEE);
         String burnTxId = node.send(burnTx);
         System.out.println("Burned with tx id " + burnTxId);
