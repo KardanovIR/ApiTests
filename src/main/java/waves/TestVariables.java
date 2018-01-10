@@ -1,11 +1,10 @@
-package ru.waves.api;
+package waves;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -18,7 +17,6 @@ public class TestVariables {
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream(new File("./" + System.getProperty("env") + ".properties")));
-//            properties.load(new FileInputStream(new File("./" + System.getProperty("env") + "_users.properties")));
 
         } catch (IOException e) {
             throw new IllegalStateException("There is no such properties file" +
@@ -35,13 +33,6 @@ public class TestVariables {
         variables.putAll(properties);
     }
 
-    public static List<String> getUserByProfile(String userProfile) {
-        String profile = (String) TestVariables.getVariable(userProfile);
-        String[] splittedProfile = profile.split("\\,");
-        assertThat("Не полные данные в профиле, возможно отсутствует логин/пароль или неправильный разделитель",
-                splittedProfile.length, is(equalTo(2)));
-        return Arrays.asList(splittedProfile);
-    }
 
     public static Map<Object, Object> getVariables() {
         return variables;
@@ -55,14 +46,14 @@ public class TestVariables {
         if (variables.get(name) != null)
             return variables.get(name);
         else
-            throw new AssertionError(String.format("Переменная %s не найдена в списке сохраненных", name));
+            throw new AssertionError(String.format("Variable %s not found, name"));
     }
 
-    public static String getLogin() {
-        if (variables.get("login") != null)
-            return (String) TestVariables.getVariable("login");
+    public static String getSeed() {
+        if (variables.get("seed") != null)
+            return (String) TestVariables.getVariable("seed");
         else
-            throw new AssertionError("Переменная 'login' не найдена в списке сохраненных");
+            throw new AssertionError("Variable 'seed' not found");
     }
 
     public static String getDefaultContentType() {
@@ -75,32 +66,32 @@ public class TestVariables {
 
     }
 
-    public static String getPassword() {
-        if (variables.get("password") != null)
-            return (String) TestVariables.getVariable("password");
+    public static String getAssetId() {
+        if (variables.get("assetId") != null)
+            return (String) TestVariables.getVariable("assetId");
         else
-            throw new AssertionError("Переменная 'password' не найдена в списке сохраненных");
+            throw new AssertionError("Variable 'assetId' not found");
     }
 
     public static String getHost() {
         if (variables.get("host") != null)
             return (String) TestVariables.getVariable("host");
         else
-            throw new AssertionError("Переменная 'host' не найдена в списке сохраненных");
+            throw new AssertionError("Variable 'host' not found");
     }
 
     public static String getProtocol() {
         if (variables.get("protocol") != null)
             return (String) TestVariables.getVariable("protocol");
         else
-            throw new AssertionError("Переменная 'protocol' не найдена в списке сохраненных");
+            throw new AssertionError("Variable 'protocol' not found");
     }
 
     public static String getApiVersion() {
         if (variables.get("api.version") != null)
             return (String) TestVariables.getVariable("api.version");
         else
-            throw new AssertionError("Переменная 'api.version' не найдена в списке сохраненных");
+            throw new AssertionError("Variable 'api.version' not found");
     }
 
 }
