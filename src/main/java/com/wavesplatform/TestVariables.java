@@ -1,4 +1,4 @@
-package waves;
+package com.wavesplatform;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,14 +46,14 @@ public class TestVariables {
         if (variables.get(name) != null)
             return variables.get(name);
         else
-            throw new AssertionError(String.format("Variable %s not found, name"));
+            throw new Error(String.format("Variable %s not found, name"));
     }
 
     public static String getSeed() {
         if (variables.get("seed") != null)
             return (String) TestVariables.getVariable("seed");
         else
-            throw new AssertionError("Variable 'seed' not found");
+            throw new Error("Variable 'seed' not found");
     }
 
     public static String getDefaultContentType() {
@@ -70,28 +70,22 @@ public class TestVariables {
         if (variables.get("assetId") != null)
             return (String) TestVariables.getVariable("assetId");
         else
-            throw new AssertionError("Variable 'assetId' not found");
+            throw new Error("Variable 'assetId' not found");
     }
 
     public static String getHost() {
         if (variables.get("host") != null)
             return (String) TestVariables.getVariable("host");
         else
-            throw new AssertionError("Variable 'host' not found");
+            throw new Error("Variable 'host' not found");
     }
 
     public static String getProtocol() {
         if (variables.get("protocol") != null)
             return (String) TestVariables.getVariable("protocol");
         else
-            throw new AssertionError("Variable 'protocol' not found");
+            throw new Error("Variable 'protocol' not found");
     }
 
-    public static String getApiVersion() {
-        if (variables.get("api.version") != null)
-            return (String) TestVariables.getVariable("api.version");
-        else
-            throw new AssertionError("Variable 'api.version' not found");
-    }
 
 }
